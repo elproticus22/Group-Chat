@@ -19,7 +19,7 @@ function App() {
           }}
         ></div>
 
-        <div className="relative z-10 h-full w-full flex items-center justify-center">
+        <div className="relative z-10 h-full w-full flex items-center justify-center flex-col lg:flex-row">
           <div className="h-full lg:w-[65%] w-[40%] flex items-center justify-center flex-col">
             <h1 className='text-[15px] lg:text-[38px] tracking-[2px] uppercase text-center font-bold text-white no-underline'>Bienvenido A La Pagina Oficial de:</h1>
             <h1 className='text-[15px] lg:text-[38px] tracking-[2px] uppercase text-center font-bold text-white no-underline'></h1>
