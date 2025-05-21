@@ -1,89 +1,49 @@
-import './App.css'
-import Chatbot from './components/chatbot'
-function App() {
+import './App.css';
+import Chatbot from './components/chatbot';
+import Button from './components/button';
+import Pattern from './components/Backgroun';
 
+function App() {
   return (
     <>
-      <div className='h-[15%] w-screen fixed top-0 bg-neutral-700 flex justify-center items-center flex-row'>
-        <h1 className='text-neutral-100 text-[20px]'>La pagina web oficial de "אוננות בפעולה"</h1>
+      <div className="w-screen h-screen bg-[lightblue] relative overflow-hidden">
+        
+        <div
+          className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] z-0 animated-pattern pointer-events-none"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle, #3498db 10%, transparent 20%),
+              radial-gradient(circle, transparent 10%, #3498db 20%)
+            `,
+            backgroundSize: '30px 30px',
+          }}
+        ></div>
+
+        <div className="relative z-10 h-full w-full flex items-center justify-center">
+          <div className="h-full lg:w-[65%] w-[40%] flex items-center justify-center flex-col">
+            <h1 className='text-[15px] lg:text-[38px] tracking-[2px] uppercase text-center font-bold text-white no-underline'>Bienvenido A La Pagina Oficial de:</h1>
+            <h1 className='text-[15px] lg:text-[38px] tracking-[2px] uppercase text-center font-bold text-white no-underline'></h1>
+          </div>
+          <div className=" h-full lg:w-[35%] w-[60%] flex items-center justify-center flex-col gap-3">
+            {/*Aqui van las cosas*/}
+            <Button text='Ver Constitucion'/>
+            <Chatbot text='Habla con miguel'/>
+          </div>
+        </div>
+
+        <style>{`
+          @keyframes movePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(20%, 20%); }
+          }
+
+          .animated-pattern {
+            animation: movePattern 8s linear infinite;
+          }
+        `}</style>
       </div>
-      <section className='w-screen h-screen bg-neutral-900 flex items-center justify-center'>
-      <br /><br /><br /><br /><br />
-        <div className='flex items-center justify-center flex-col'>
-          <h1 className='text-neutral-100 text-[30px]'>PRESIDENTE ACTUAL DEL GRUPO: Jhan Pierre Zamora Galvis</h1>
-          <br /><br /><br />
-          <h1 className='text-neutral-100 text-[30px]'>PARTIDO POLITICO ACTUAL: Centro Demoniaco</h1>
-          <br /><br /><br /><br />
-          <img src="Tarjeta de presidencia.png" alt="" className='h-40 w-auto'/>
-        </div>
-        <div className='fixed bottom-0 left-0 flex flex-col'>
-          <Chatbot/>
-          <div className='h-[10%]'><p className='text-10 text-white'>Hecho por Jhan Zamora 2025°</p></div>
-        </div>
-      </section>  
     </>
-  )
+  );
 }
 
-export default App
-
-/*
-                                                                                                                 
-                                                                            ⢀⣠⣰⣼⠾⢿⣔                              
-                             ⣠⡾⠟⢽⣴⡀                                     ⢀⣠⣸⡿⠟⠇⠁   ⠫⣔                             
-                           ⢠⣾⠇   ⠋⢿⣴⡀                                 ⣠⣼⠟⠇         ⠫⣔                            
-                          ⢠⡿⠅      ⠋⢿⣴⡀            ⢀⣐⣐⣀             ⣠⡾⠗⠁            ⠫⡔                           
-                         ⣨⡿⠁         ⠃⢿⣴⡀         ⣨⡟⠁ ⠃⠏⠽⢴⣐       ⢀⣺⠟                ⢯⡐                          
-                        ⢠⡿⠁            ⠋⢿⣔       ⢨⠗       ⠃⠯⣴⡀    ⣺⠗                 ⠂⣵                          
-                        ⣿⠕               ⠯⣽⡀    ⢀⡟          ⠂⠋⢴⡀ ⢨⡗                   ⢫⡔                         
-                       ⢪⡟                 ⠊⢿⣔   ⠊⡕             ⢯⣐⣿⡕                   ⠂⣵                         
-                       ⣾⠕                   ⠋⢽⡐  ⢯⡐            ⠊⣿⡿⠁                    ⣿                         
-                       ⣿                     ⠂⠯⣴⣀⣸⠟             ⠂                      ⣿                         
-                      ⢨⣿                     ⢀⣸⠟⠇                                      ⣿                         
-                      ⢪⣿                    ⢨⣿⣵⣰⣰⣼⣼⣰⣰                                 ⢠⡕                         
-                      ⠪⣿                                                              ⣪⡕                         
-                       ⣿                                                              ⣿                          
-                       ⢪⡔                 ⢀⣠⣸⡼⠼⣼⣰⣀                                   ⣪⠗                          
-                       ⠪⣽               ⣀⣸⠟⠇    ⠂⠯⣽⡀          ⢀⣠⣰⢼⣼⣴⣰⡀              ⣨⡟                           
-                        ⢿⡐            ⢀⣼⠟⠁        ⠋⣽⡀       ⣠⠞⠇⠁    ⠃⠏⢽⣰⡀          ⣨⡟                            
-                        ⠊⣵           ⢠⣿⠅         ⣠⣐⠋⠅     ⢠⠟⠁⢀⣀⡀       ⠃⢯⣴⡀       ⣸⡿                             
-                         ⢫⣔         ⢠⣿⠅        ⢀⣾⣿⣿⣵        ⢨⣿⣿⣿⣴        ⠋⣽⡀    ⢀⣺⡟⠁                             
-                          ⢯⡐        ⣺⡕        ⢀⣾⣿⣿⣿⣿⡕       ⢪⣿⣿⣿⣿⣵        ⠪⣽   ⢠⣿⣷⣀⣀⣀                            
-                          ⠂⢯⡐       ⣿⠅        ⣪⣿⣿⣿⣿⣿⣿       ⢪⣿⣿⣿⣿⣿         ⣿⡕  ⠂⠃⠃⠃⠃⣿⠅                           
-                      ⣰⠰⠸⠼⠼⠾⠿       ⢿⡔        ⣿⣿⣿⣿⣿⣿⡟       ⢪⣿⣿⣿⣿⣿         ⣺⡕      ⢨⡗                            
-                      ⠫⣔            ⠊⣽⡀       ⢯⣿⣿⣿⣿⡿⠁       ⠂⣿⣿⣿⣿⡟        ⢀⣿⠕     ⢠⡿                             
-                       ⠊⢵⡐           ⠂⠭⣐       ⠋⠯⠟⠇          ⠂⠏⠏⠇         ⠾⠗      ⣾⠁                             
-                         ⠋⢴⡀       ⠈⢅⣀⠼⠃             ⠈⠿⠏               ⠄         ⢪⡕                              
-                           ⡽        ⠃⠁                                           ⠪⡕                              
-                          ⢨⠅                     ⣰         ⢽⡐                     ⣿                              
-                          ⡿                      ⢽⣐⣠⣸⠼⢴⣐⣀⣀⣀⣺⠕                ⣠⣸⣴⣰⣰⣾⡔                             
-                          ⡕  ⢀⣠⡰⠼⠼⣴⣐               ⠁    ⠃⠃⠃               ⢀⣠⡾⠟⠁  ⠂⠃                              
-                          ⠽⠜⠏⠃    ⠂⠋⠿⢼⣴⣐⣀⣀                         ⢀⣠⣰⣰⣸⠼⠞⠇⠁                                     
-                                       ⠃⢏⣿⣿⣿⣽⣼⣼⣼⠐                  ⠂⢯⣗⠁                                          
-                                        ⢿⡿⠏⠏⠏⠃⠁                      ⢯⣔                                          
-                                        ⠊⣿⡐                           ⢯⡔                                         
-                                         ⠊⣽⡀          ⣀   ⣀           ⠂⢿⡐         ⢀⣰⣐       ⣠⣰⣰⡀                 
-                                          ⠊⣿⡔         ⣿⡕ ⢀⣿            ⠊⣿⡀        ⣺⡟⠯⣽⡐   ⣠⣾⠟⠁⠃⢿⣔                
-                                         ⢀⣺⡿⠁         ⢯⣵ ⢪⡿             ⢫⣽      ⣠⣾⠟  ⠂⠯⣼⡼⠿⠏⠁   ⠂⣿⡐               
-                                        ⢀⣾⠗ ⣀⡀        ⢪⣿ ⣿⡕              ⣿⣴⣀⣀⣠⣸⡾⠟⠁              ⢪⣽               
-                                        ⣾⣿⣾⣿⠿⠅        ⠂⣿⣴⣿⠅              ⢪⣿⡟⠏⠃⠁                 ⢪⣿               
-                                        ⠃⠃⢫⡿           ⢿⣿⣿           ⣨⡐  ⠂⣿⣵                    ⣺⡕               
-                                          ⣪⠕           ⢪⣿⡗          ⢠⣿    ⢫⣿⡐                  ⣨⣿                
-                                        ⢀⣸⡿            ⠊⣿⡕          ⣺⡕    ⠂⣿⣵                ⢀⣸⡿⠁                
-                                     ⣀⣸⡾⠏⠁   ⡀          ⣿⡕         ⣨⡟      ⢯⣿⡀            ⢀⣠⣸⡿⠇                  
-                                  ⣀⣸⣾⣿⣿⣽⣰⡀  ⠊⣿⣔         ⣿⡕        ⣨⡿⠅      ⠂⢿⣽⣴⡀         ⠨⣿⣿⠁                    
-                              ⢀⣠⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣴  ⠊⣿⣐        ⣿⡕       ⣨⣿⠅     ⣀⣰⣸⣼⣿⣿⣿⣴⡀        ⠂⠏⠯⠼⣼⡐                 
-                      ⢀⣸⣾⣼⣰⣰⣸⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣵  ⠊⢿⣵⡀     ⢠⣿⣕     ⣀⣾⡿⠅   ⢀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣴          ⣠⡿⠅                 
-                     ⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡕  ⣠⣿⠿⣽⣴⣰⣰⣸⡿⠿⢿⣴⣰⣰⣼⣾⣿⣿    ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣐      ⣠⣾⠟⠁                  
-                    ⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣠⣺⠟⠁    ⠃⠁   ⠂⠃⠃  ⠂⠯⣽⡐ ⣺⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣼⣰⣰⣼⠿⠇                     
-                   ⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁                  ⠋⢿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁                       
-                   ⣺⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠇                       ⠫⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡐                      
-                   ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠇                          ⠂⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿                      
-                   ⢯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠇                              ⠋⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡔                     
-                   ⠊⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁                                  ⠫⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠅                     
-                    ⠂⠯⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠏⠃                                      ⠂⠯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇                      
-                       ⠂⠃⠋⠏⠏⠏⠏⠃⠁                                           ⠂⠋⠿⢿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠇                        
-                                                                                ⠃⠃⠃⠃⠃                            
-                                                                                                                 
-
-*/
+export default App;
