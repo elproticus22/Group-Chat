@@ -1,15 +1,42 @@
-# Political-group
-La pagina politica del grupo, creada por pedro y zamora
+# Portal Oficial del Grupo "אוננות בפעולה"
 
-# React + Vite
+Bienvenido al sitio web oficial del grupo de WhatsApp **"אוננות בפעולה"**, una sátira política y social organizada por y para sus miembros.  
+Este proyecto busca centralizar todo el caos, la ideología, los memes de calidad, y la estructura gubernamental de nuestro grupo en una sola página web.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ¿Qué incluye esta página?
 
-Currently, two official plugins are available:
+La web se compone de varios módulos independientes que juntos forman el centro de operaciones del grupo:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Miguel - El Chatbot Oficial
+Un asistente IA sin filtros que responde con sarcasmo, humor negro y complicidad absoluta.  
+Entrenado con nuestra gloriosa Constitución y siempre dispuesto a seguir el juego.
 
-## Expanding the ESLint configuration
+### Constitución del Grupo
+Texto completo de nuestra Constitución, versión vigente, artículos detallados, y un resumen legalmente cuestionable.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Sistema de Votación *(En proceso)*
+Plataforma para votar por reformas constitucionales, candidatos, leyes absurdas o simplemente para insultar al presidente actual mediante democracia directa.
+
+###  Presidente y Partido Político Actual *(En proceso)*
+Sección que muestra el partido gobernante (actualmente **Centro Demoniaco**) y su presidente(actualmente **Jhan Zamora**) vitalicio o derrocable.  
+Incluye lema, visión del régimen, y propaganda autoritaria.
+
+###  Página de Miembros *(En proceso)*
+Galería con perfiles personalizados de cada integrante del grupo. Biografías reales o inventadas, fotos humillantes, y niveles de actividad o pendejez.
+
+###  Candidatos y Partidos Políticos *(En proceso)*
+Donde los miembros pueden postularse a elecciones, fundar partidos y explicar por qué merecen el poder absoluto (aunque no lo obtendrán).
+
+---
+
+## Tecnologías Usadas
+
+- **React** – Estructura principal del sitio.
+- **Vite** – Compilación ultrarrápida.
+- **TailwindCSS** – Estilizado con flow y memes.
+- **Componentes modulares** – Cada página del sitio es un módulo dinámico e independiente.
+- **Framer Motion** - Para animaciones fluidas y una pagina mas interactiva
+- **Styled components** - Para algunos estilos
+- **Open Router** – Para Miguel.
+
+---

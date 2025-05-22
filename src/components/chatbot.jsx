@@ -31,11 +31,10 @@ function Chatbot() {
     setChatLog(prev => prev + `Tu: ${userInput}\n`);
     setUserInput('');
 
-    try {
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    try {      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer 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`,
+          "Authorization": `Bearer ${import.meta.env.OPENROUTER}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
