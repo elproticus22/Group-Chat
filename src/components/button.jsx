@@ -70,7 +70,7 @@ const Button = ({ text, children }) => {
                       <ul>
                         <li>
                             Artículo 1: Denominación y Propósito.
-                            El grupo se denomina (nombre del grpo o si lo quieres cambiar).
+                            El grupo se denomina אוננות בפעולה.
                         </li>
                         <li>
                             Artículo 2: Miembros.
