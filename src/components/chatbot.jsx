@@ -29,12 +29,10 @@ function Chatbot() {
 
     const updatedMessages = [...messages, { role: "user", content: userInput }];
     setChatLog(prev => prev + `Tu: ${userInput}\n`);
-    setUserInput('');
-
-    try {      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    setUserInput('');    try {      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${import.meta.env.OPENROUTER}`,
+          "Authorization": `Bearer ${import.meta.env.VITE_OPENROUTER}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
