@@ -40,3 +40,58 @@ Donde los miembros pueden postularse a elecciones, fundar partidos y explicar po
 - **Open Router** – Para Miguel.
 
 ---
+## Cómo usar el proyecto
+
+1. **Clona el repositorio**  
+   ```bash
+   git clone https://github.com/elproticus22/Group-Chat
+   cd Group-Chat
+   ```
+
+2. **Instala las dependencias**  
+   ```bash
+   npm install
+   ```
+
+3. **Agrega tu API key en un archivo `.env`**  
+   Crea un archivo llamado `.env` en la raíz del proyecto y añade tu clave de OpenRouter así:
+
+   ```env
+   VITE_OPENROUTER=sk-xxxxxx...
+   ```
+
+   Si no tienes una clave, puedes generar una gratis en:  
+   👉[https://openrouter.ai/](https://openrouter.ai/)
+
+4. **Ejecuta el proyecto en modo desarrollo**  
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📄Archivo `.env.example`
+
+Este archivo sirve como plantilla para que otros usuarios sepan qué variables de entorno deben definir. Ya contiene:
+
+```env
+VITE_OPENROUTER=your_api_key_here
+```
+
+Asegúrate de **no subir tu archivo `.env` real** al repositorio. Puedes evitarlo incluyendo esta línea en tu archivo `.gitignore`:
+
+```gitignore
+.env
+```
+
+---
+
+##  Configuración rápida
+
+1. Copia el archivo `.env.example` y renómbralo a `.env`.
+2. Reemplaza `your_api_key_here` con tu clave real de OpenRouter.
+3. Luego ejecuta el proyecto con:
+
+   ```bash
+   npm run dev
+   ```
