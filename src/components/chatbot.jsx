@@ -63,7 +63,7 @@ function Chatbot() {
         id="userInput"
         value={userInput}
         onChange={e => setUserInput(e.target.value)}
-        placeholder="Escribe tu pregunta para el ChatPolítico..."
+        placeholder="Escribe tu pregunta para miguel..."
       />
       <ChatButton onClick={sendMessage}>
         Enviar
