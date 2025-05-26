@@ -29,7 +29,10 @@ function Chatbot() {
 
     const updatedMessages = [...messages, { role: "user", content: userInput }];
     setChatLog(prev => prev + `Tu: ${userInput}\n`);
-    setUserInput('');    try {      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    setUserInput('');    
+
+    try {      
+      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${import.meta.env.VITE_OPENROUTER}`,
@@ -40,7 +43,7 @@ function Chatbot() {
           messages: updatedMessages,
           temperature: 0.7,       
           max_tokens: 300         
-      })
+        })
       });
 
       const data = await response.json();
@@ -54,6 +57,13 @@ function Chatbot() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
   return (
     <ChatbotContainer>
       <ChatWindow id="chat">
@@ -63,6 +73,7 @@ function Chatbot() {
         id="userInput"
         value={userInput}
         onChange={e => setUserInput(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Escribe tu pregunta para miguel..."
       />
       <ChatButton onClick={sendMessage}>
@@ -310,7 +321,7 @@ const ChatWindow = styled.div`
   background: rgba(0, 0, 0, 0.3);
   padding: 1.5rem;
   border-radius: 10px;
-  font-family: 'Courier New', monospace;
+  font-family:sans-serif;
   font-size: 0.95rem;
   line-height: 1.4;
   box-shadow: inset 0 0 20px rgba(174, 243, 231, 0.1);
@@ -396,65 +407,3 @@ const ChatButton = styled.button`
 `;
 
 export default Button;
-
-
-/*
-                                                                                                                 
-                                                                            ⢀⣠⣰⣼⠾⢿⣔                              
-                             ⣠⡾⠟⢽⣴⡀                                     ⢀⣠⣸⡿⠟⠇⠁   ⠫⣔                             
-                           ⢠⣾⠇   ⠋⢿⣴⡀                                 ⣠⣼⠟⠇         ⠫⣔                            
-                          ⢠⡿⠅      ⠋⢿⣴⡀            ⢀⣐⣐⣀             ⣠⡾⠗⠁            ⠫⡔                           
-                         ⣨⡿⠁         ⠃⢿⣴⡀         ⣨⡟⠁ ⠃⠏⠽⢴⣐       ⢀⣺⠟                ⢯⡐                          
-                        ⢠⡿⠁            ⠋⢿⣔       ⢨⠗       ⠃⠯⣴⡀    ⣺⠗                 ⠂⣵                          
-                        ⣿⠕               ⠯⣽⡀    ⢀⡟          ⠂⠋⢴⡀ ⢨⡗                   ⢫⡔                         
-                       ⢪⡟                 ⠊⢿⣔   ⠊⡕             ⢯⣐⣿⡕                   ⠂⣵                         
-                       ⣾⠕                   ⠋⢽⡐  ⢯⡐            ⠊⣿⡿⠁                    ⣿                         
-                       ⣿                     ⠂⠯⣴⣀⣸⠟             ⠂                      ⣿                         
-                      ⢨⣿                     ⢀⣸⠟⠇                                      ⣿                         
-                      ⢪⣿                    ⢨⣿⣵⣰⣰⣼⣼⣰⣰                                 ⢠⡕                         
-                      ⠪⣿                                                              ⣪⡕                         
-                       ⣿                                                              ⣿                          
-                       ⢪⡔                 ⢀⣠⣸⡼⠼⣼⣰⣀                                   ⣪⠗                          
-                       ⠪⣽               ⣀⣸⠟⠇    ⠂⠯⣽⡀          ⢀⣠⣰⢼⣼⣴⣰⡀              ⣨⡟                           
-                        ⢿⡐            ⢀⣼⠟⠁        ⠋⣽⡀       ⣠⠞⠇⠁    ⠃⠏⢽⣰⡀          ⣨⡟                            
-                        ⠊⣵           ⢠⣿⠅         ⣠⣐⠋⠅     ⢠⠟⠁⢀⣀⡀       ⠃⢯⣴⡀       ⣸⡿                             
-                         ⢫⣔         ⢠⣿⠅        ⢀⣾⣿⣿⣵        ⢨⣿⣿⣿⣴        ⠋⣽⡀    ⢀⣺⡟⠁                             
-                          ⢯⡐        ⣺⡕        ⢀⣾⣿⣿⣿⣿⡕       ⢪⣿⣿⣿⣿⣵        ⠪⣽   ⢠⣿⣷⣀⣀⣀                            
-                          ⠂⢯⡐       ⣿⠅        ⣪⣿⣿⣿⣿⣿⣿       ⢪⣿⣿⣿⣿⣿         ⣿⡕  ⠂⠃⠃⠃⠃⣿⠅                           
-                      ⣰⠰⠸⠼⠼⠾⠿       ⢿⡔        ⣿⣿⣿⣿⣿⣿⡟       ⢪⣿⣿⣿⣿⣿         ⣺⡕      ⢨⡗                            
-                      ⠫⣔            ⠊⣽⡀       ⢯⣿⣿⣿⣿⡿⠁       ⠂⣿⣿⣿⣿⡟        ⢀⣿⠕     ⢠⡿                             
-                       ⠊⢵⡐           ⠂⠭⣐       ⠋⠯⠟⠇          ⠂⠏⠏⠇         ⠾⠗      ⣾⠁                             
-                         ⠋⢴⡀       ⠈⢅⣀⠼⠃             ⠈⠿⠏               ⠄         ⢪⡕                              
-                           ⡽        ⠃⠁                                           ⠪⡕                              
-                          ⢨⠅                     ⣰         ⢽⡐                     ⣿                              
-                          ⡿                      ⢽⣐⣠⣸⠼⢴⣐⣀⣀⣀⣺⠕                ⣠⣸⣴⣰⣰⣾⡔                             
-                          ⡕  ⢀⣠⡰⠼⠼⣴⣐               ⠁    ⠃⠃⠃               ⢀⣠⡾⠟⠁  ⠂⠃                              
-                          ⠽⠜⠏⠃    ⠂⠋⠿⢼⣴⣐⣀⣀                         ⢀⣠⣰⣰⣸⠼⠞⠇⠁                                     
-                                       ⠃⢏⣿⣿⣿⣽⣼⣼⣼⠐                  ⠂⢯⣗⠁                                          
-                                        ⢿⡿⠏⠏⠏⠃⠁                      ⢯⣔                                          
-                                        ⠊⣿⡐                           ⢯⡔                                         
-                                         ⠊⣽⡀          ⣀   ⣀           ⠂⢿⡐         ⢀⣰⣐       ⣠⣰⣰⡀                 
-                                          ⠊⣿⡔         ⣿⡕ ⢀⣿            ⠊⣿⡀        ⣺⡟⠯⣽⡐   ⣠⣾⠟⠁⠃⢿⣔                
-                                         ⢀⣺⡿⠁         ⢯⣵ ⢪⡿             ⢫⣽      ⣠⣾⠟  ⠂⠯⣼⡼⠿⠏⠁   ⠂⣿⡐               
-                                        ⢀⣾⠗ ⣀⡀        ⢪⣿ ⣿⡕              ⣿⣴⣀⣀⣠⣸⡾⠟⠁              ⢪⣽               
-                                        ⣾⣿⣾⣿⠿⠅        ⠂⣿⣴⣿⠅              ⢪⣿⡟⠏⠃⠁                 ⢪⣿               
-                                        ⠃⠃⢫⡿           ⢿⣿⣿           ⣨⡐  ⠂⣿⣵                    ⣺⡕               
-                                          ⣪⠕           ⢪⣿⡗          ⢠⣿    ⢫⣿⡐                  ⣨⣿                
-                                        ⢀⣸⡿            ⠊⣿⡕          ⣺⡕    ⠂⣿⣵                ⢀⣸⡿⠁                
-                                     ⣀⣸⡾⠏⠁   ⡀          ⣿⡕         ⣨⡟      ⢯⣿⡀            ⢀⣠⣸⡿⠇                  
-                                  ⣀⣸⣾⣿⣿⣽⣰⡀  ⠊⣿⣔         ⣿⡕        ⣨⡿⠅      ⠂⢿⣽⣴⡀         ⠨⣿⣿⠁                    
-                              ⢀⣠⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣴  ⠊⣿⣐        ⣿⡕       ⣨⣿⠅     ⣀⣰⣸⣼⣿⣿⣿⣴⡀        ⠂⠏⠯⠼⣼⡐                 
-                      ⢀⣸⣾⣼⣰⣰⣸⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣵  ⠊⢿⣵⡀     ⢠⣿⣕     ⣀⣾⡿⠅   ⢀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣴          ⣠⡿⠅                 
-                     ⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡕  ⣠⣿⠿⣽⣴⣰⣰⣸⡿⠿⢿⣴⣰⣰⣼⣾⣿⣿    ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣐      ⣠⣾⠟⠁                  
-                    ⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣠⣺⠟⠁    ⠃⠁   ⠂⠃⠃  ⠂⠯⣽⡐ ⣺⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣼⣰⣰⣼⠿⠇                     
-                   ⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁                  ⠋⢿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁                       
-                   ⣺⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠇                       ⠫⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡐                      
-                   ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠇                          ⠂⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿                      
-                   ⢯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠇                              ⠋⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡔                     
-                   ⠊⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁                                  ⠫⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠅                     
-                    ⠂⠯⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠏⠃                                      ⠂⠯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇                      
-                       ⠂⠃⠋⠏⠏⠏⠏⠃⠁                                           ⠂⠋⠿⢿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠇                        
-                                                                                ⠃⠃⠃⠃⠃                            
-                                                                                                                 
-
-*/

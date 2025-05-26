@@ -17,7 +17,7 @@ Texto completo de nuestra Constitución, versión vigente, artículos detallados
 ### Sistema de Votación *(En proceso)*
 Plataforma para votar por reformas constitucionales, candidatos, leyes absurdas o simplemente para insultar al presidente actual mediante democracia directa.
 
-###  Presidente y Partido Político Actual *(En proceso)*
+###  Presidente y Partido Político Actual 
 Sección que muestra el partido gobernante (actualmente **Centro Demoniaco**) y su presidente(actualmente **Jhan Zamora**) vitalicio o derrocable.  
 Incluye lema, visión del régimen, y propaganda autoritaria.
 
@@ -26,6 +26,9 @@ Galería con perfiles personalizados de cada integrante del grupo. Biografías r
 
 ###  Candidatos y Partidos Políticos *(En proceso)*
 Donde los miembros pueden postularse a elecciones, fundar partidos y explicar por qué merecen el poder absoluto (aunque no lo obtendrán).
+
+###  Una seccion dedicada a canciones recomendadas por miembros del grupo
+Una seccion dedicada a canciones recomendadas por miembros del grupo en la cual habra un player y un selector para las canciones con mini player. Ninguna cancion es de nuestra autoria (A menos que diga "hecho con ia"), todas son de distintos artistas los cuales se les dara el credito en el nombre de la cancion.
 
 ---
 
