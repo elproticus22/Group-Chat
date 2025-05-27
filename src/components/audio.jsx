@@ -10,6 +10,7 @@ const AudioPlayerButton = ({ text }) => {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [showMiniPlayer, setShowMiniPlayer] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const audioRef = useRef(null);
 
   // ========================================
@@ -44,7 +45,7 @@ const AudioPlayerButton = ({ text }) => {
     {
       id: 5,
       title: "Jamiroquai - Virtual insanity",
-      artist: "Jhan", 
+      artist: "Pedro", 
       src: "/VirtualInsanity.mp3" // Replace with your actual file path
     },
     {
@@ -53,8 +54,86 @@ const AudioPlayerButton = ({ text }) => {
       artist: "Jhan", 
       src: "/Headingforthedoor.mp3" // Replace with your actual file path
     },
+    {
+      id: 7,
+      title: "Roundabout",
+      artist: "Pedro", 
+      src: "/Cliffhanger go brr.mp3" // Replace with your actual file path
+    },
+    {
+      id: 8,
+      title: "Duster - Chocolate and mint",
+      artist: "Jhan", 
+      src: "/Duster - Chocolate And Mint.mp3" // Replace with your actual file path
+    },
+    {
+      id: 9,
+      title: "Mag.Lo - The Sad Summer, Pt. 2_ a Wondrous Story",
+      artist: "Jhan", 
+      src: "/Mag.Lo - The Sad Summer, Pt. 2_ a Wondrous Story.mp3" // Replace with your actual file path
+    },
+    {
+      id: 10,
+      title: "Gorillaz - Rhinestone Eyes",
+      artist: "Pedro", 
+      src: "/Gorillaz - Rhinestone Eyes.mp3" // Replace with your actual file path
+    },
+    {
+      id: 11,
+      title: "Keygen Church - Dilerkefet",
+      artist: "Jhan", 
+      src: "/Keygen Church - Dilerkefet.mp3" // Replace with your actual file path
+    },
+    {
+      id: 12,
+      title: "King Geedorah - Next Levels",
+      artist: "Jhan", 
+      src: "/King Geedorah - Next Levels.mp3" // Replace with your actual file path
+    },
+    {
+      id: 13,
+      title: "Oneson Clang - Heat Spells",
+      artist: "Jhan", 
+      src: "/Oneson Clang - Heat Spells.mp3" // Replace with your actual file path
+    },
+    {
+      id: 14,
+      title: "STAND PROUD",
+      artist: "Pedro", 
+      src: "/STAND PROUD.mp3" // Replace with your actual file path
+    },
+    {
+      id: 15,
+      title: "The Living Tombstone - My Ordinary Life",
+      artist: "Pedro", 
+      src: "/The Living Tombstone - My Ordinary Life.mp3" // Replace with your actual file path
+    },
+    {
+      id: 16,
+      title: "Oneson Clang - Imagining Things",
+      artist: "Jhan", 
+      src: "/Oneson Clang - Imagining Things.mp3" // Replace with your actual file path
+    },
+    {
+      id: 17,
+      title: "Oneson Clang - Only One Villain",
+      artist: "Jhan", 
+      src: "/Oneson Clang - Only One Villain.mp3" // Replace with your actual file path
+    },
+    {
+      id: 13,
+      title: "Duster - Heading for the door",
+      artist: "Jhan", 
+      src: "/Headingforthedoor.mp3" // Replace with your actual file path
+    },
     // Add more here as you need
   ];
+
+  // Filter tracks based on search term
+  const filteredTracks = audioTracks.filter(track =>
+    track.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    track.artist.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Prevent body scroll when popup is open
   useEffect(() => {
@@ -277,31 +356,41 @@ const AudioPlayerButton = ({ text }) => {
                 </PlayerHeader>
 
                 <PlayerContainer>
-                  <TrackList>
-                    <h2>Canciones</h2>
-                    <AnimatePresence>
-                      {audioTracks.map((track, index) => (
-                        <TrackItem
-                          key={track.id}
-                          initial={{ x: -50, opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          transition={{ delay: 0.1 * index }}
-                          onClick={() => selectTrack(track)}
-                          $isActive={currentTrack?.id === track.id}
-                          whileHover={{ scale: 1.02, x: 10 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <TrackInfo>
-                            <TrackTitle>{track.title}</TrackTitle>
-                            <TrackArtist>{track.artist}</TrackArtist>
-                          </TrackInfo>
-                          <PlayIndicator $isActive={currentTrack?.id === track.id}>
-                            {currentTrack?.id === track.id && isPlaying ? '⏸️' : '▶️'}
-                          </PlayIndicator>
-                        </TrackItem>
-                      ))}
-                    </AnimatePresence>
-                  </TrackList>
+                  <TrackListSection>
+                    <TrackListHeader>
+                      <h2>Canciones</h2>
+                      <SearchBar
+                        type="text"
+                        placeholder="Buscar canciones..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                    </TrackListHeader>
+                    <ScrollableTrackList>
+                      <AnimatePresence>
+                        {filteredTracks.map((track, index) => (
+                          <TrackItem
+                            key={track.id}
+                            initial={{ x: -50, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.1 * index }}
+                            onClick={() => selectTrack(track)}
+                            $isActive={currentTrack?.id === track.id}
+                            whileHover={{ scale: 1.02, x: 10 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            <TrackInfo>
+                              <TrackTitle>{track.title}</TrackTitle>
+                              <TrackArtist>{track.artist}</TrackArtist>
+                            </TrackInfo>
+                            <PlayIndicator $isActive={currentTrack?.id === track.id}>
+                              {currentTrack?.id === track.id && isPlaying ? '⏸️' : '▶️'}
+                            </PlayIndicator>
+                          </TrackItem>
+                        ))}
+                      </AnimatePresence>
+                    </ScrollableTrackList>
+                  </TrackListSection>
 
                   <PlayerSection>
                     <AnimatePresence mode="wait">
@@ -545,11 +634,65 @@ const PlayerContainer = styled.div`
   }
 `;
 
-const TrackList = styled.div`
+const TrackListSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+`;
+
+const TrackListHeader = styled.div`
+  margin-bottom: 1rem;
+
   h2 {
     color: #AEF3E7;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-size: 1.5rem;
+  }
+`;
+
+const SearchBar = styled.input`
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(174, 243, 231, 0.3);
+  border-radius: 8px;
+  color: #AEF3E7;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+
+  &::placeholder {
+    color: rgba(174, 243, 231, 0.5);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #AEF3E7;
+    background: rgba(174, 243, 231, 0.05);
+    box-shadow: 0 0 0 2px rgba(174, 243, 231, 0.1);
+  }
+`;
+
+const ScrollableTrackList = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(174, 243, 231, 0.1);
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #AEF3E7;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #5EEAD4;
   }
 `;
 
