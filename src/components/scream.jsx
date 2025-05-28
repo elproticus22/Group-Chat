@@ -23,11 +23,6 @@ const ScreamerButton = ({ text }) => {
     setTimeout(() => {
       setIsFlashing(false);
     }, 3000);
-    
-    // Close screamer after 5 seconds
-    setTimeout(() => {
-      setIsTriggered(false);
-    }, 5000);
   };
 
   // Prevent body scroll when screamer is active
