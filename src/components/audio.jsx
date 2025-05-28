@@ -122,10 +122,22 @@ const AudioPlayerButton = ({ text }) => {
       src: "/Oneson Clang - Only One Villain.mp3" // Replace with your actual file path
     },
     {
-      id: 13,
-      title: "Duster - Heading for the door",
+      id: 18,
+      title: "Godfather Don - Do my Thing",
       artist: "Jhan", 
-      src: "/Headingforthedoor.mp3" // Replace with your actual file path
+      src: "/Godfather Don - Do my Thing.mp3" // Replace with your actual file path
+    },
+    {
+      id: 19,
+      title: "Big Tabb - Laid Back",
+      artist: "Jhan", 
+      src: "/Big Tabb - Laid Back.mp3" // Replace with your actual file path
+    },
+    {
+      id: 20,
+      title: "Da Henchmen - Stressfield Days",
+      artist: "Jhan", 
+      src: "/Da Henchmen - Stressfield Days.mp3" // Replace with your actual file path
     },
     // Add more here as you need
     // Todo: find a more optimal way to add songs through code, because copying and pasting then modifying each individually takes too much time.
