@@ -30,7 +30,7 @@ const Button3 = ({ text, children }) => {
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen]);
-
+  //Those below are totally arbitrary data, todo: add some actual data and a way to compile it (How????)
   return (
     <StyledWrapper>
       <button onClick={() => setIsOpen(true)}>{text}</button>

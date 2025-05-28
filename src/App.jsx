@@ -6,6 +6,7 @@ import Pattern from './components/Backgroun';
 import Button2 from './components/button2';
 import AudioPlayerButton from './components/audio';
 import Button3 from './components/Datos';
+import ScreamerButton from './components/scream';
 
 const ShaderBackground = () => {
   const canvasRef = useRef(null);
@@ -90,7 +91,7 @@ const ShaderBackground = () => {
         gl_FragColor = effect(iResolution.xy, uv * iResolution.xy);
       }
     `;
-
+    //The shader code aint mine, its from a super talented person on shadertoy, heres the link to the original thing: https://www.shadertoy.com/view/XXtBRr
     function compileShader(source, type) {
       const shader = gl.createShader(type);
       gl.shaderSource(shader, source);
@@ -157,7 +158,7 @@ const ShaderBackground = () => {
       }
     };
   }, []);
-
+  // To do: Fix performan issues, this thing takes way too much resources for itself... 
   return (
     <canvas 
       ref={canvasRef}
@@ -177,16 +178,19 @@ function App() {
         {/* Content overlay */}
         <div className="relative z-10 h-full w-full flex items-center justify-center flex-col lg:flex-row">
           <div className="h-full lg:w-[65%] w-[40%] flex items-center justify-center flex-col">
-            <h1 className='text-[15px] lg:text-[38px] tracking-[2px] uppercase text-center font-bold text-white drop-shadow-2xl'>Bienvenido A La Pagina Oficial de אוננות בפעולה.</h1>
+            <h1 className='text-[15px] lg:text-[38px] tracking-[2px] uppercase text-center font-bold text-white drop-shadow-2xl'>Bienvenido A La Pagina Oficial</h1>
             <h1 className='text-[15px] lg:text-[38px] tracking-[2px] uppercase text-center font-bold text-white drop-shadow-2xl'></h1>
           </div>
           <div className="h-full lg:w-[35%] w-[60%] flex items-center justify-center flex-col gap-3">
-            {/*Aqui van las cosas*/}
+            {/*Here are the things
+              Todo: Give a fixed size to these so they are simetrical
+            */}
             <Button text='Ver Constitucion'/>
             <Chatbot text='Habla con miguel'/>
             <Button2 text='Actual presidente'/>
             <AudioPlayerButton text='Lista de canciones'/>
             <Button3 text='Datos de la pagina'/>
+            <ScreamerButton text='Prueba de miguel2.0'/>
           </div>
         </div>
       </div>

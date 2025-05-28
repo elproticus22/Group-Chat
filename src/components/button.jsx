@@ -424,4 +424,5 @@ const ActionButton = styled.button`
   }
 `;
 
+  //The amount of code dedicated to the styling and animation is absurd
 export default Button;

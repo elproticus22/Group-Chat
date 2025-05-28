@@ -16,6 +16,7 @@ const AudioPlayerButton = ({ text }) => {
   // ========================================
   // AUDIO TRACKS CONFIGURATION
   // Important!!!! do not forget this part, this is basically a databse with the audios and stuff
+  // The audio files are being held in the public folder.
   // ========================================
   const audioTracks = [
     {
@@ -127,6 +128,7 @@ const AudioPlayerButton = ({ text }) => {
       src: "/Headingforthedoor.mp3" // Replace with your actual file path
     },
     // Add more here as you need
+    // Todo: find a more optimal way to add songs through code, because copying and pasting then modifying each individually takes too much time.
   ];
 
   // Filter tracks based on search term
@@ -234,14 +236,6 @@ const AudioPlayerButton = ({ text }) => {
     setCurrentTime(newTime);
   };
 
-  const handleVolumeChange = (e) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
-  };
-
   const formatTime = (time) => {
     if (isNaN(time) || time === 0) return '0:00';
     const minutes = Math.floor(time / 60);
@@ -270,7 +264,11 @@ const AudioPlayerButton = ({ text }) => {
         style={{ display: 'none' }}
       />
 
-      {/* Mini Player - shows when popup is closed but audio is loaded */}
+      {/* Mini Player - shows when popup is closed but audio is loaded 
+          Todo: Use UseContext so it closes whenever any other component is opened, so it doesnt stays there on the screen
+          taking useless space
+          Also center the text inside the close, pause, etc button so i dont get an an aneurysm each time i see it
+      */}
       <AnimatePresence>
         {showMiniPlayer && (
           <MiniPlayer

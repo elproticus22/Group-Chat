@@ -18,7 +18,7 @@ Texto completo de nuestra Constitución, versión vigente, artículos detallados
 Plataforma para votar por reformas constitucionales, candidatos, leyes absurdas o simplemente para insultar al presidente actual mediante democracia directa.
 
 ###  Presidente y Partido Político Actual 
-Sección que muestra el partido gobernante (actualmente **Centro Demoniaco**) y su presidente(actualmente **Jhan Zamora**) vitalicio o derrocable.  
+Sección que muestra el partido gobernante (actualmente **Ninguno**) y su presidente(actualmente **Ninguno**) vitalicio o derrocable.  
 Incluye lema, visión del régimen, y propaganda autoritaria.
 
 ###  Página de Miembros *(En proceso)*
@@ -98,3 +98,8 @@ Asegúrate de **no subir tu archivo `.env` real** al repositorio. Puedes evitarl
    ```bash
    npm run dev
    ```
+
+---
+
+Todo esto fue y esta siendo desarrollado por 1 sola persona, si alguien encuentra un error en el codigo, o algo que se pueda mejorar ponlo en la seccion de "issues" del repo.
+Jhan Pierre 2025°

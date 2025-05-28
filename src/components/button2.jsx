@@ -67,12 +67,13 @@ const Button2 = ({ text, children }) => {
                     
                     <Section>
                       <h2>Presidente</h2>
-                      <p>Jhan Zamora</p>
+                      <p>Ninguno (elecciones)</p>
                     </Section>
 
                     <Section>
                       <h2>Partido Politico</h2>
-                      <p>Centro Demoniaco</p>
+                      <p>Ninguno (elecciones)
+                      </p>
                     </Section>
 
                     <ActionButtons>
